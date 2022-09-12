@@ -1,0 +1,1213 @@
+01 常量
+//常量的定义方式
+//1、#define宏常量
+//2、const修饰的变量
+
+//1、#define 宏常量
+constexpr auto Day = 7;
+
+int main()
+{
+
+    //Day =14;  //错误，Day是常量，一旦修改就会报错
+    cout << "一周总共有：" << Day << "天" << endl;
+
+    //2、 const修饰的变量
+    const int month = 12;
+    //month = 24;//错误，const修饰的变量也是常量
+    cout << "一年总共有：" << month << "个月份" << endl;
+
+    system("pause");
+
+    return 0;
+02 关键字
+//创建变量：数据类型  变量名称=变量初始值
+//不要用关键字给变量或者常量起名称
+//int int = 10; 错误，第二个int是关键字，不可以作为变量的名称
+03 标识符
+//标识符命名规则
+//1、标识符不可以是关键字
+   int int = 10;
+//2、标识符是由字母、数字、下划线构成
+   int abc = 10;
+   int _abc = 20;
+   int _123abc = 30;
+//3、标识符第一个字符只能是字母或下划线
+   //int 123abc = 40;//错误，标识符第一个字母不能是数字
+//4、标识符是区分大小写的
+   int aaa = 100;
+   cout << aaa << endl;
+   //cout << AAA << endl;//错误，AAA与aaa不是同一个名称
+//建议：给变量起名的时候，最好能够做到见名知意
+04 整型
+//1、短整型(2字节)
+   short num1 = 10;
+//2、整型(4字节)
+   int num2 = 10;
+//3、长整型(windows 4字节 Linux32位 4字节 Linux64位 8字节)
+   long num3 = 10;
+//4、长长整型(8字节)
+   long long num4 = 10;
+05 sizeof关键字
+   //可以利用sizeof求出数据类型占用内存大小
+   //语法： sizeof(数据类型/变量)
+06 实型（浮点型）
+   //1、单精度 float  4字节 有效数字7位
+   //2、双精度 double 8字节 有效数字15位
+   //默认情况下输出一个小数会显示出6位有效数字
+   //科学计数法
+	float f2 = 3e2;//3*10^2
+	cout << "f2 = " << f2 << endl;
+	float f3 = 3e-2;//3*0.1^2
+	cout << "f3 = " << f3 << endl;
+07 字符型
+    1、字符型变量创建方式
+	2、字符型变量所占用内存大小
+	3、字符型变量常见错误
+	4、字符型变量对应ASCII编码
+08 字符串型
+   1、C风格字符串
+      注意事项 char字符串名[]
+	  注意事项2 等号后面 要用双引号 包含起来字符串
+	  char str[] = "hello world";
+	  cout << str << endl;
+
+   2、C++风格字符串
+	  包含一个头文件 #include<string>
+	  string str2 = "hello world";
+	  cout << str2 << endl;
+09 布尔类型
+   1、创建bool数据类型
+	bool flag = true; //true代表真
+	cout << flag << endl;
+
+	flag = false; //false代表假
+	cout << flag << endl;
+
+	本质上 1代表真 0代表假
+10 数据输入
+    1、整型
+	int a = 0;
+	cout << "请给整型变量a赋值：" << endl;
+	cin >> a;
+	cout << "整型变量a = " << a << endl;
+
+	2、浮点型
+	float f = 3.14f;
+	cout << "请给浮点型变量f赋值：" << endl;
+	cin >> f;
+	cout << "浮点型变量f = " << f << endl;
+
+	3、字符型
+	char ch = 'a';
+	cout << "请给字符型变量f赋值：" << endl;
+	cin >> ch;
+	cout << "字符型变量ch = " << ch << endl;
+
+	4、字符串型
+	string str = "hello";
+	cout << "请给字符串 str赋值：" << endl;
+	cin >> str;
+	cout << "字符串变量str = " << str << endl;
+	
+	5、布尔类型
+	bool flag = false;
+	cout << "请给布尔类型 flag赋值：" << endl;
+	cin >> flag;
+	cout << "布尔类型flag = " << flag << endl;
+11 运算符
+   1、算术运算符
+   +加 -减 *乘 /除 %取模 ++a前置+1 a++后置+1 --a前置-1 a--后置-1 
+   两个整数相除，结果依然是整数，将小数部分去除
+   错误！两个数相除，除数不能为0
+   两个小数可以相除
+   取模运算的本质就是求余数
+   两个数相除，除数不能为0，所以也做不了取模运算
+   两个小数是不可以做取模运算
+   前置递增先让变量+1然后进行表达式的计算
+   后置递增先让进行表达式运算后让变量+1
+   2、赋值运算符
+   = += -= *= /=
+   a+=2//a=a+2
+   a-=2//a=a-2
+   a*=2//a=a*2
+   a/=2//a=a/2
+   a%=2//a=a%2
+   3、比较运算符
+   ==//等于 ！=//不等于 <//小于 >//大于 <=//小于等于 >=//大于等于
+   4、逻辑运算符
+   ！非  //a为假 !a就为真 !!a就为假
+   &&与  //a为假b为真 a&&b就为假  a为真b为真  a&&b就为真
+   ||或  //a与b有一个为真，a||b就为真   a与b都为假，a||b就为假
+ 12 if条件语句
+    //选择结构 单行if语句
+	//用户输入分数，如果分数大于600，视为考上一本大学，在屏幕上输出
+
+	//1、用户输入分数
+	int score = 0;
+	cout << "请输入一个分数：" << endl;
+	cin >> score;
+	//2、打印用户输入的分数
+	cout << "您输入的分数为：" << score << endl;
+	//3、判断分数是否大于600，如果大于，那么输出
+	//注意事项，if条件后面不要加分号
+	if (score > 600)
+	{
+		cout << "恭喜您考上了大学" << endl;
+	} 
+	//选择结构 多行if语句
+	....
+	if (score > 600)//大于600分执行下面大括号的内容
+	{
+		cout << "恭喜您考上了一本大学" << endl;
+	}
+	else//不大于600分执行else括号的内容
+	{
+		cout << "未考上一本大学" << endl;
+	}
+	//选择结构 多条件if语句
+	//3、判断
+	// 如果大于600，考上一本
+	// 如果大于500，考上二本
+	// 如果大于400，考上三本
+	// 前三个都没有满足，未考上本科
+	if (score > 600)//大于600分执行下面大括号的内容
+	{
+		cout << "恭喜您考上了一本大学" << endl;
+	}
+	else if(score>500)//第二个条件判断
+	{
+		cout << "恭喜您考上了二本大学" << endl;
+	}
+	else if (score > 400)//第三个条件判断
+	{
+		cout << "恭喜您考上了三本大学" << endl;
+	}
+	else//第四个条件判断
+	{
+		cout << "很遗憾，您未考上本科" << endl;
+	}
+	//选择结构 嵌套if语句
+	//3、判断
+	// 如果大于600，考上一本
+	     //大于700  北大
+		 //大于650  清华
+		 //其余     人大  
+	// 如果大于500，考上二本
+	// 如果大于400，考上三本
+	// 前三个都没有满足，未考上本科
+	if (score > 600)//大于600分执行下面大括号的内容
+	{
+		cout << "恭喜您考上了一本大学" << endl;
+		if (score > 700)
+		{
+			cout << "您能考入北京大学" << endl;
+		}
+		if (score > 650)
+		{
+			cout << "您能考入清华大学" << endl;
+		}
+		else
+		{
+			cout << "您能考入中国人民大学" << endl;
+		}
+	}
+	else if(score>500)//第二个条件判断
+	{
+		cout << "恭喜您考上了二本大学" << endl;
+	}
+	else if (score > 400)//第三个条件判断
+	{
+		cout << "恭喜您考上了三本大学" << endl;
+	}
+	else//第四个条件判断
+	{
+		cout << "很遗憾，您未考上本科" << endl;
+	}
+	
+	三只小猪称体重
+	#include<iostream>
+    using namespace std;
+
+    int main()
+   {
+
+	//三只小猪称体重，判断那只最重
+	
+	//创建三只小猪的体重变量
+	int pig1 = 0;
+	int pig2 = 0;
+	int pig3 = 0;
+	//让用户来输入三只小猪的重量
+	cout << "请输入第一只小猪的体重" << endl;
+	cin >> pig1;
+	cout << "请输入第二只小猪的体重" << endl;
+	cin >> pig2;
+	cout << "请输入第三只小猪的体重" << endl;
+	cin >> pig3;
+
+	cout << "第一只小猪的体重为：" << pig1 << endl;
+	cout << "第二只小猪的体重为：" << pig2 << endl;
+	cout << "第三只小猪的体重为：" << pig3 << endl;
+	//判断哪只最重
+	if (pig1 > pig2)
+	{
+		if (pig1 > pig3)
+		{
+			cout << "第一只小猪最重" << endl;
+		}
+		else
+		{
+			cout << "第三只小猪最重" << endl;
+		}
+	}
+	else if (pig1 < pig2)
+	{
+		if (pig2 > pig3)
+		{
+			cout << "第二只小猪最重" << endl;
+		}
+		else
+		{
+			cout << "第三只小猪最重" << endl;
+		}
+	}
+	system("pause");
+
+	return 0;
+    }
+    //三目运算符
+
+	//创建三个变量 a b c
+	//将a和b做比较，将变量大的值赋值给变量c
+	int a = 10;
+	int b = 20;
+	int c = 0;
+
+	c = (a > b ? a : b);
+	cout << "c=" << c << endl;
+	//再C++中，三目运算符返回的是变量，可以继续赋值
+	(a > b ? a : b) = 100;
+	cout << "a=" << a << endl;
+	cout << "b=" << b << endl;
+13 switch语句
+   int main()
+{
+
+	//switch语句
+	//给电影打分
+	//10 ~ 9  经典
+	//8 ~ 7   非常好
+	//6 ~ 5   一般
+	//5以下   烂片
+
+	//1、提示用户给电影评分
+	cout << "请给电影打分" << endl;
+	//2、用户开始打分
+	int score = 0;
+	cin >> score;
+	cout << "您打的分数为：" << score << endl;
+	//3、根据用户打分来提示用户最后的结果
+	switch (score)
+	{
+	case 10:
+		cout << "您认为是经典电影" << endl;
+		break;//退出当前分支
+	case 9:
+		cout << "您认为是经典电影" << endl;
+		break;
+	case 8:
+		cout << "您认为电影非常好" << endl;
+		break;
+	case 7:
+		cout << "您认为电影非常好" << endl;
+		break;
+	case 6:
+		cout << "您认为电影一般" << endl;
+		break;
+	case 5:
+		cout << "您认为电影一般" << endl;
+		break;
+	default:
+		cout << "您认为这是烂片" << endl;
+	}
+	system("pause");
+
+	return 0;
+}
+    //if和switch区别
+	//switch 缺点，判断时候只能是整型或者字符型，不可以是区间
+	//switch 优点，结构清晰，执行效率高
+14 while语句
+    //while循环
+	//在屏幕中打印0 ~ 9 这10个数字
+	int num = 0;
+	//while()中填入循环条件
+	//注意事项：在写循环一定要避免死循环的出现
+	while (num<10)
+	{
+		cout << num << endl;
+		num++;
+	}
+	猜数字
+	    //随机生成一个数
+	    //有5次猜的机会
+	    //5次内猜对了，系统提示猜对了
+	    //超过5次没有猜对，系统提示猜错了
+	//添加随机数种子 作用利用当前系统时间生成随机数，防止每次随机数都一样
+	srand((unsigned int)time(NULL));
+	//1、系统生产随机数
+	int num = rand() % 100 + 1;//rand()%100 + 1 生成0 + 1~99 + 1的随机数
+	cout << num << endl;
+	//2、玩家进行猜测
+	int val = 0;//玩家输入的数据
+	int a = 5;
+	while (a > 0)//
+	{
+		cin >> val;
+
+		//3、判断玩家的猜测 
+		
+
+			if (val > num)
+			{
+				cout << "猜测过大" << endl;
+			}
+			else if (val < num)
+			{
+				cout << "猜测过小" << endl;
+			}
+
+
+			else
+			{
+				cout << "恭喜您，猜对了" << endl;
+				break;//猜对，退出循环，可以利用该关键字退出循环
+			}
+		a--;
+		cout << "您的剩余次数：" << a << "次" << endl;
+		if (a == 0)
+		{
+			cout << "很遗憾，您失败了" << endl;
+			break;
+			}
+		
+		
+	}
+15 do...while语句
+     //do...while语句
+	//在屏幕中输出 0 到 9 这10个数字
+	int num = 0;
+
+	do
+	{
+		cout << num << endl;
+		num++;
+	} while (num < 10);
+	找水仙花数
+	//1、先打印所有三位数字
+	//2、从所有三位数字中找到水仙花数
+	int num = 100;
+
+	do
+	{
+		int a = 0;//个位
+		int b = 0;//十位
+		int c = 0;//百位
+
+		a = num % 10;//获取数字个位
+		b = num / 10 % 10;//获取数字十位
+		c = num / 100;//获取数字百位
+
+		if (a*a*a+b*b*b+c*c*c==num)
+		{ //如果是水仙花数，才打印
+			cout << num << endl;
+		}
+		num++;
+	} while (num < 1000);
+16 for循环
+     int i = 0;
+	for (int i = 0;i < 10;i++)
+	{
+		cout << i << endl;
+		
+	}
+	敲桌子
+	1、先输出1到100这些数字
+	2、从这100个数字中找到特殊数字，改为“敲桌子”
+	   特殊数字
+	   
+	   7的倍数 （7 14 21 28...) % 7 = 0
+	   个位有7 （7 17 27 37...) % 10 = 7
+	   十位有7 （70 71 72 73...) / 10 = 7
+	   //敲桌子案例
+	//1、先输出1~100数字
+	int i = 0;
+	for (int i = 0;i <= 100;i++)
+	{
+		//2、从100个数字中找到特殊数字，打印“敲桌子”
+		//如果是 7的倍数、个位有7、或者十位有7，打印敲桌子
+		if (i % 7 == 0 || i % 10 == 7 || i / 7 == 7)//如果是特殊数字，打印敲桌子
+		{
+			cout << "敲桌子" << endl;
+		}
+		else //如果不是特殊数字，才打印数字
+		{
+			cout << i << endl;
+		}
+		
+	}
+17 嵌套循环
+    //利用嵌套循环实现星图
+	//打印一行星图
+	for (int j = 0; j < 10; j++)
+	{
+		for (int i = 0; i < 10; i++)
+		{
+			cout << "* ";
+		}
+		cout << endl;
+	}
+	乘法口诀表
+	//乘法口径表
+	//打印行数
+	for (int i = 1; i <= 9; i++)
+	{
+		//cout << i << endl;
+		for (int j = 1; j <= i; j++)
+		{
+			cout << j << "*" << i << "=" << j*i << " ";
+		}
+		cout << endl;
+	}
+18 跳转语句
+    //break的使用时机  跳出循环
+	//1、出现在switch语句中
+	//cout << "请选择副本难度" << endl;
+	//cout << "1、普通" << endl;
+	//cout << "2、中等" << endl;
+	//cout << "3、困难" << endl;
+
+	//int select = 0;//创建选择结果的变量
+	//cin >> select;//等待用户输入
+	//switch (select)
+	//{
+	//case 1:
+	//	cout << "您选择的是普通难度" << endl;
+	//	break;//退出switch语句
+	//case 2:
+	//	cout << "您选择的是中等难度" << endl;
+	//	break;
+	//case 3:
+	//	cout << "您选择的是困难难度" << endl;
+	//	break;
+	//default:
+	//	break;
+	//}
+	
+	//continue语句  停止当前循环，继续下一个循环
+	//continue语句
+	for (int i = 0; i <= 100; i++)
+	{
+		//如果是奇数输出，偶数不输出
+		if (i % 2 == 0)//0 2 4 6 8 10
+		{
+			continue;//可以筛选条件，执行到此就不在向下执行，执行下一次循环
+		}
+		cout << i << endl;
+	}
+	
+	// goto语句  标记后，执行到goto语句时，会跳转到标记的位置
+	cout << "1、xxxx" << endl;
+	cout << "2、xxxx" << endl;
+	goto FLAG;//goto标记
+	cout << "3、xxxx" << endl;
+	cout << "4、xxxx" << endl;
+    FLAG://标记
+	cout << "5、xxxx" << endl;
+19 一维数组
+    //数组
+
+	/*
+	1、数据类型 数组名[数组长度]
+	2、数据类型 数组名[数组长度] = {值1，值2...}
+	3、数据类型 数组名[] = {值1，值2...}
+	*/
+
+	//1、数据类型 数组名[数组长度]
+	int arr[5];
+	//给数组中的元素进行赋值
+	//数组元素下标是从0开始索引的
+	arr[0] = 10;
+	arr[1] = 20;
+	arr[2] = 30;
+	arr[3] = 40;
+	arr[4] = 50;
+	//访问数组元素
+	cout << arr[0] << endl;
+	cout << arr[1] << endl;
+	cout << arr[2] << endl;
+	cout << arr[3] << endl;
+	cout << arr[4] << endl;
+
+	//2、数据类型 数组名[数组长度] = { 值1，值2... }
+	//如果在初始化数据时候，没有全部填写完，会用0来填补这种数
+	int arr2[5] = { 10,20,30,};
+	/*cout << arr2[0] << endl;
+	cout << arr2[1] << endl;
+	cout << arr2[2] << endl;
+	cout << arr2[3] << endl;
+	cout << arr2[4] << endl;*/
+	//利用循环 输出数组中的元素
+	/*for (int i = 0; i < 5; i++)
+	{
+		cout << arr2[i] << endl;
+	}*/
+
+	//3、数据类型 数组名[] = { 值1，值2... }
+	//定义数组的时候，必须有初始长度
+	int arr3[] = { 90,80,70,60,50,40,30,20,10 };
+	for (int i = 0; i < 9; i++)
+	{
+		cout << arr3[i] << endl;
+	}
+	
+	数组名
+	//数组名用途
+	//1、可以通过数组名统计整个数组占用内存大小
+	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	cout << "整个数组占用内存空间为：" << sizeof(arr) << endl;
+	cout << "每个元素占用内存空间为：" << sizeof(arr[0]) << endl;
+	cout << "数组中元素的个数为：" << sizeof(arr)/sizeof(arr[0]) << endl;
+	//2、可以通过数组名查看数组首地址
+	cout << "数组的首地址为：" << (int)arr << endl;
+	cout << "数组中第一个元素的首地址为：" << (int)&arr[0] << endl;
+	cout << "数组中第二个元素的首地址为：" << (int)&arr[1] << endl;
+
+	//数组名是常量，不可以进行赋值的操作
+	//arr = 9;//错误
+	
+	五只小猪称体重
+	//1、创建5只小猪体重的数组
+//	int arr[5] = { 300,350,200,400,250 };
+//	//2、从数组中找到最大值
+//	int max = 0;
+//	for (int i = 0; i < 5; i++)
+//	{
+//		//cout << arr[i] << endl;
+//		//如果访问的数组中的元素比我认定的最大值还大，更新最大值
+//		if (arr[i] > max)
+//		{
+//			max = arr[i];
+//		}
+//	}
+//
+//	//3、打印最大值
+//	cout << "最重的小猪体重为：" << max << endl;
+       
+	   元素逆置
+	   //实现数组元素设置
+
+	//1、创建数组
+	int arr[5] = { 1,3,2,5,4 };
+	cout << "数组逆置前：" << endl;
+	for (int i = 0; i < 5; i++)
+	{
+		cout << arr[i] << endl;
+	}
+	//2、实现逆置
+	//2.1记录起始下标的位置
+	//2.2记录结束下标的位置
+	//2.3起始下标与结束下标的元素互换
+	//2.4起始位置++ 结束位置--
+	//2.5循环执行2.1操作，直到起始位置>=结束位置
+	int start = 0;
+	int end = (sizeof(arr) / sizeof(arr[0]) - 1);//结束下标
+	while (start < end)
+	{
+		//实现元素互换
+		int temp = arr[start];
+		arr[start] = arr[end];
+		arr[end] = temp;
+		//下标更新
+		start++;
+		end--;
+	}
+    //3、打印逆置后的数组
+	cout << "数组元素逆置后：" << endl;
+	for (int i = 0; i < 5; i++)
+	{
+		cout << arr[i] << endl;
+	}
+	
+	冒泡排序
+	//利用冒泡排序实现升序序列
+	int arr[9] = { 4,2,8,0,5,7,1,3,9 };
+
+	cout << "排序前：" << endl;
+	for (int i = 0; i < 9; i++)
+	{
+		cout << arr[i] << " ";
+	}
+	cout << endl;
+	//开始冒泡排序
+	//总共排序的论述为元素个数 - 1
+	for (int i = 0; i < 9 - 1; i++)
+	{
+		//内层循环对比 次数 = 元素个数 - 当前轮数 - 1
+		for (int j = 0; j < 9 - i - 1; j++)
+		{
+			//如果第一个数字比第二个数字大，实现交换这两个数字
+			if (arr[j] > arr[j + 1])
+			{
+				int temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+	//排序后结果
+	cout << "排序后：" << endl;
+	for (int i = 0; i < 9; i++)
+	{
+		cout << arr[i] <<" ";
+	}
+	cout << endl；
+20 二维数组
+    //二维数组定义方式
+	/*
+	   1、数据类型 数组名[行数][列数]；
+	   2、数据类型 数组名[行数][列数] = {{数据1，数据2}，{数据3，数据4}}；
+	   3、数据类型 数组名[行数][列数] = {数据1，数据2，数据3，数据4}；
+	   4、数据类型 数组名[ ][列数] = {数据1，数据2，数据3，数据4}；
+	*/
+
+	//1、数据类型 数组名[行数][列数]；
+	int arr[2][3];
+	arr[0][0] = 1;
+	arr[0][1] = 2;
+	arr[0][2] = 3;
+	arr[1][0] = 4;
+	arr[1][1] = 5;
+	arr[1][2] = 6;
+	//外层循环打印行数，外层循环打印列数；
+	/*for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			cout << arr[i][j] << endl;
+		}
+	}*/
+	//2、数据类型 数组名[行数][列数] = { {数据1，数据2}，{数据3，数据4} }；
+	int arr2[2][3] = { {1,2,3},{4,5,6} };
+	/*for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			cout << arr2[i][j] << " ";
+		}
+		cout << endl;
+	}*/
+	//3、数据类型 数组名[行数][列数] = {数据1，数据2，数据3，数据4}；
+	int arr3[2][3] = {1,2,3,4,5,6 };
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			cout << arr3[i][j] << " ";
+		}
+		cout << endl;
+	}
+	//4、数据类型 数组名[ ][列数] = {数据1，数据2，数据3，数据4}；
+	int arr4[ ][3] = { 1,2,3,4,5,6 };//可以不写行数，但必须写列数，系统可以自动计算几行几列
+	
+	数组名称用途
+	//二维数组名称用途
+
+	//1、可以查看占用内存空间大小
+	int arr[2][3] =
+	{
+		{1,2,3},
+		{4,5,6}
+	};
+	cout << "二维数组占用内存空间大小：" << sizeof(arr) << endl;
+	cout << "二维数组第一行占用的内存为：" << sizeof(arr[0]) << endl;
+	cout << "二维数组第个元素占用的内存为：" << sizeof(arr[0][0]) << endl;
+
+	cout << "二维数组的行数是多少：" << sizeof(arr) / sizeof(arr[0]) << endl;
+	cout << "二维数组的列数是多少：" << sizeof(arr[0]) / sizeof(arr[0][0]) << endl;
+	//2、可以查看二维数组的首地址
+	cout << "二维数组的首地址为：" << int(arr) << endl;
+	cout << "二维数组第一行的首地址为：" << int(arr[0]) << endl;
+	cout << "二维数组第二行的首地址为：" << int(arr[1]) << endl;
+	cout << "二维数组第一个元素的首地址为：" << (int)&arr[0][0] << endl;
+	cout << "二维数组第二个元素的首地址为：" << (int)&arr[0][1] << endl;
+	
+	考试成绩统计
+	#include<iostream>
+    #include<string>
+    using namespace std;
+
+    int main()
+   {
+	//1、创建二维数组，3行3列
+	int score[3][3] =
+	{
+		{100,100,100},
+	    {90,50,100},
+	    {60,70,80}
+	};
+	//创建一维数组存放人名
+	string names[3] = { "张三","李四","王五" };
+	//2、统计每个人的总和分数
+	for (int i = 0; i < 3; i++)
+	{
+		int sum = 0;
+		for (int j = 0; j < 3; j++)
+		{
+			sum += score[i][j];
+			cout << score[i][j] << " ";
+		}
+		cout << names[i] << "的个人的成绩为：" << sum << endl;
+		cout << endl;
+	}
+	system("pause");
+
+	return 0;
+   }
+21 函数
+     函数的定义
+	 
+	//语法：
+	//返回值类型 函数名（参数列表）{函数体语句 return表达式}
+
+	//加法函数，实现两个整型相加，并且将相加的结果进行返回
+    //函数定义的时候，num1和num2并没有真实数据，他只是一个形式上的参数，简称形参
+int add(int num1, int num2)
+{
+	int sum = num1 + num2;
+	return sum;
+}
+
+int main()
+{   
+	//在main函数中调用add函数
+	int a = 10;
+	int b = 20;
+	//函数调用语法：函数名称（参数）
+	//a和b称为实际参数，简称实参
+	//当调用函数时候，实参的值会传递给形参
+	int c = add(a, b);
+	cout << c << endl;
+	
+	函数常见样式
+//1、无惨无返
+void test01()
+{
+	cout << "this is test01" << endl;
+}
+//2、有参无返
+void test02(int a)
+{
+	cout << "this is test02 a = " << a << endl;
+}
+//3、无参有反
+int test03()
+{
+	cout << "this is test03" << endl;
+	return 1000;
+}
+//4、有参有反
+int test04(int a)
+{
+	cout << "this is test04" << a << endl;
+	return a;
+}
+int main()
+{
+	//无惨无返函数调用
+	test01(); 
+	//有参无返函数调用
+	test02(100);
+	//无参有反函数调用
+	int num1 = test03();
+	cout << "num1=" << num1 << endl;
+	//有参有反函数调用
+	int num2 = test04(10000);
+	cout << "num2=" << num2 << endl;
+	
+	函数的声明
+//比较函数，实现两个整型数字比较，返回较大的值
+//提前告诉编译器函数的存在，可以利用函数的声明
+int max(int a, int b);//函数在main函数后，必须声明
+int main()
+{
+	int a = 10;
+	int b = 20;
+	cout << max(a, b) << endl;
+	system("pause");
+
+	return 0;
+}
+int max(int a, int b)
+{
+	return a > b ? a : b;
+}
+
+    函数分文件编写
+	#include<iostream>
+    using namespace std;
+    #include"swap.h"
+
+    //函数的分文件编写
+    //实现两个数字进行交换的函数
+    //函数的声明
+    //void swap(int a, int b);
+    //函数的定义
+    //void swap(int a, int b)
+    //{
+    //	int temp = a;
+    //	a = b;
+    //	b = temp;
+    //	cout << "a=" << a << endl;
+    //	cout << "b=" << b << endl;
+    //}
+
+    //1、创建.h后缀名的头文件
+    //2、创建.cpp后缀名的源文件
+    //3、在头文件中写函数的声明
+    //4、在源文件中写函数的定义
+
+    int main()
+   {
+	int a = 10;
+	int b = 20;
+	swap(a, b);
+	system("pause");
+
+	return 0;
+   }
+22 指针
+    //1、定义指针
+	int a = 10;
+	//定义指针的语法：数据类型*指针变量名；
+	//int* p;
+	//让指针记录变量a的地址
+	//p = &a;
+	//cout << "a的地址为：" << &a << endl;
+	//cout << "指针p为：" << p << endl;
+	//2、使用指针
+	//可以通过解引用的方式来找到指针指向的内存
+	//指针前加 * 代表解引用，找到指针指向的内存中的数据
+	//*p = 1000;
+	//cout << "a = " << a << endl;
+	//cout << "*p = " << *p << endl;
+
+	//指针所占的内存空间大小
+	int* p = &a;
+	cout << "sizeof(int *) = " << sizeof(int*) << endl;
+	cout << "sizeof(int *) = " << sizeof(float*) << endl;
+	cout << "sizeof(int *) = " << sizeof(double*) << endl;
+	cout << "sizeof(int *) = " << sizeof(char*) << endl;
+	cout << "sizeof(int *) = " << sizeof(int*) << endl;
+	
+	空指针/野指针
+	//空指针
+	//1、空指针用于给指针变量进行初始化
+	int* p = NULL;
+
+	//2、空指针是不可以进行访问的
+	//0~255之间的内存编号是系统占用的，因此不可以访问
+	//cout << *p << endl;
+	*p = 100;
+	cout << *p << endl;
+
+	//野指针
+	int* p = (int*)0x1100;
+	//访问野指针报错
+	cout << *p << endl;
+	//空指针和野指针都不是我们申请的空间，因此不要访问
+	
+	const修饰指针
+	//1、const修饰指针   常量指针
+	int a = 10;
+	int b = 10;
+	const int* p = &a;
+	//指针指向的值不可以改，指针的指向可以改
+	//*p = 20;错误
+	p = &b;
+	//2、const修饰常量    指针常量
+	int* const p2 = &a;
+	*p2 = 100;//正确的
+	//p2 = &b;  //错误，指针的指向不可以改
+	//3、const修饰指针和常量
+	const int* const p3 = &a;
+	//指针的指向 和指针指向的值 都不可以改
+	//*p3 = 100;  错误
+	//p3 = &b     错误
+	
+	指针和数组
+	//指针和数组
+	//利用指针访问数组中的元素
+
+	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	cout << "第一个元素为" << arr[0] << endl;
+	int* p = arr;//arr就是数组首地址
+	cout << "利用指针访问第一个元素" << *p << endl;
+	p++; //让指针向后偏移四个字节
+	cout << "利用指针访问第二个元素" << *p << endl;
+	cout << "利用指针遍历数组" << *p << endl;
+	int* p2 = arr;
+	for (int i = 0; i < 10; i++)
+	{
+		//cout << arr[i] << endl;
+		cout << *p2 << endl;
+		p2++;
+	}
+	
+	指针和函数
+	#include<iostream>
+using namespace std;
+
+//实现两个数字进行交换
+void swap01(int a, int b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
+	cout << "swap01 a = " << a << endl;
+	cout << "swap01 b = " << b << endl;
+}
+void swap02(int* p1, int* p2)
+{
+	int temp = *p1;
+	*p1 = *p2;
+	*p2 = temp;
+}
+int main()
+{
+	//指针和函数
+	//1、值传递
+	int a = 10;
+	int b = 20;
+	//swap01(a, b);
+	
+	//2、地址传递
+	//如果是地址传递，可以修饰实参
+	swap02(&a, &b);
+	cout << "a = " << a << endl;
+	cout << "b = " << b << endl;
+	system("pause");
+
+	return 0;
+}
+
+    指针配合数组、函数案例
+#include<iostream>
+using namespace std;
+//冒泡排序函数 参数1  数组的首地址  参数2  数组长度
+void bubblesort(int*arr,int len)
+{
+	for (int i = 0; i < len - 1; i++)
+	{
+		for (int j = 0; j < len - i - 1; j++)
+		{
+			//如果j>j+1的值  交换数字
+			if (arr[j] > arr[j + 1])
+			{
+				int temp = arr[j];
+				arr[j] = arr[j + 1];
+				arr[j + 1] = temp;
+			}
+		}
+	}
+}
+//打印数组
+void printArray(int* arr, int len)
+{
+	for (int i = 0; i < len; i++)
+	{
+		cout << arr[i] << endl;
+	}
+}
+int main()
+{
+	//1、先创建一个数组
+	int arr[10] = { 4,3,6,9,1,2,10,8,7,5 };
+	int len = sizeof(arr) / sizeof(arr[0]);
+	//2、创建一个函数实现冒泡排序
+	bubblesort(arr, len);
+	//3、打印排序后的数组
+	printArray(arr,len);
+	system("pause");
+
+	return 0;
+}
+23 结构体
+    结构体的定义和使用
+#include<iostream>
+using namespace std;
+#include<string>
+
+//1、创建学生的数据类型  :  学生包括（姓名，年龄，分数）
+//自定义数据类型，一些类型集合组成的一个类型
+//语法 struct 类型名称 （成员列表）
+struct student
+{
+	//成员列表
+
+	//姓名
+	string name;
+	//年龄
+	int age;
+	//分数
+	int score;
+}s3;//在定义结构体时顺便创建结构体变量
+//2、通过学生类型创建具体学生
+  
+
+int main()
+{
+	//2.1、 struct student s1
+	//struct关键字可以省略
+	struct student s1;
+	//给s1属性赋值，通过，访问结构体变量中的属性
+	s1.name = "张三";
+	s1.age = 18;
+	s1.score = 100;
+
+	cout << "姓名：" << s1.name << "年龄：" << s1.age << "分数：" << s1.score << endl;
+  //2.2、 struct student s2 = {...}
+	struct student s2 = { "李四",19,80 };
+	cout << "姓名：" << s2.name << "年龄：" << s2.age << "分数：" << s2.score << endl;
+  //2.3、 在定义结构体时顺便创建结构体变量
+	s3.name = "王五";
+	s3.age = 20;
+	s3.score = 60;
+	cout << "姓名：" << s3.name << "年龄：" << s3.age << "分数：" << s3.score << endl;
+	system("pause");
+
+	return 0;
+}
+
+     3、结构体数组
+	 //结构体数组
+////1、定义结构体
+//struct student
+//{
+//	//姓名
+//	string name;
+//	//年龄
+//	int age;
+//	//分数
+//	int score;
+//};
+//
+//int main()
+//{
+////2、创建结构体数组
+//	struct student stuArray[3] =
+//	{
+//		{"张三",18,100},
+//		{"李四",28,99},
+//		{"王五",38,66}
+//	};
+////3、给结构体数组中的元素赋值
+//	stuArray[2].name = "赵六";
+//	stuArray[2].age = 80;
+//	stuArray[2].score = 60;
+////4、遍历结构体数组
+//	for (int i = 0; i < 3; i++)
+//	{
+//		cout << "姓名：" << stuArray[i].name
+//			<< "年龄:" << stuArray[i].age
+//			<< "分数：" << stuArray[i].score << endl;
+//	}
+   
+      4、结构体指针
+	  struct student
+//{
+//	string name;
+//	int age;
+//	int score;
+//};
+//int main()
+//{
+//	//1、创建学生结构体变量
+//	student s = { "张三",18,100 };
+//	//2、通过指针指向结构体变量
+//	student* p = &s;
+//	//3、通过指针访问结构体变量中的数据
+//	//通过结构体指针，访问结构体中的属性，需要利用“->”
+//	cout << "姓名：" << p->name << "年龄：" << p->age << "分数：" << p->score << endl;
+
+     5、结构体嵌套
+	 定义学生的结构体
+//struct student
+//{
+//	string name;
+//	int age;
+//	int score;
+//};
+////定义老师结构体
+//struct teacher
+//{
+//	int id;  //教师编号
+//	string name; //教师姓名
+//	int age; //年龄
+//	struct student stu; //辅导的学生
+//};
+//int main()
+//{
+//	//结构体嵌套结构体
+//	//创建老师
+//	teacher t;
+//	t.id = 10000;
+//	t.name = "老王";
+//	t.age = 50;
+//	t.stu.name = "小王";
+//	t.stu.age = 20;
+//	t.stu.score = 60;
+//
+//	cout << "老师姓名：" << t.name << "\n"
+//		<< "老师编号：" << t.id << "\n"
+//		<< "老师年龄：" << t.age << "\n"
+//		<< "老师辅导的学生姓名：" << t.stu.name << "\n"
+//		<< "老师辅导的学生年龄：" << t.stu.age << "\n"
+//		<< "老师辅导的学生成绩：" << t.stu.score << endl;
+
+      6、结构体做函数参数
+	  struct student
+{
+	string name;
+	int age;
+	int score;
+};
+//打印学生信息1的函数
+//1、值传递
+void printStudent1(struct student s)
+{
+	s.age = 100;
+	cout << "子函数中 姓名：" << s.name << "年龄：" << s.age << "分数：" << s.score << endl;
+}
+//2、地址传递
+void printStudent2(struct student * p)
+{
+	p->age = 200;
+	cout << "子函数中 姓名：" << p->name << "年龄: " << p->age << "分数: " << p->score << endl;
+}
+
+int main()
+{
+	//结构体做函数参数
+	//将学生传入到一个参数中，打印学生身上的所有信息
+
+	//创建结构体变量
+	struct student s;
+	s.name = "张三";
+	s.age = 18;
+	s.score = 100;
+
+	//printStudent1(s);
+	printStudent2(&s);
+	cout << "main函数中打印姓名：" << s.name << "年龄：" << s.age << "分数：" << s.score << endl;
